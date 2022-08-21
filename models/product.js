@@ -44,17 +44,29 @@ module.exports = class Product {
           console.log(err);
         });
       }
-  });
-}
+    });
+  }
+
+  static deleteById(id) {
+    getProductsFromFile(products => {
+      const updatedProducts = products.filter(prod => prod.id !== id);
+      fs.writeFile(p, JSON.stringify(updatedProducts), err => {
+        if (!err) {
+
+        }
+      })
+      cb(product);
+    });
+  }
 
   static fetchAll(cb) {
-  getProductsFromFile(cb);
-}
+    getProductsFromFile(cb);
+  }
 
   static findById(id, cb) {
-  getProductsFromFile(products => {
-    const product = products.find(p => p.id === id);
-    cb(product);
-  });
-}
+    getProductsFromFile(products => {
+      const product = products.find(p => p.id === id);
+      cb(product);
+    });
+  }
 };
